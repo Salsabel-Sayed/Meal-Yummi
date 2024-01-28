@@ -17,9 +17,9 @@ links.forEach(function (link) {
     } else if (link.id === "searchLink") {
       displaySearch();
     } else {
-        if (link.id === "contactLink") {
-            displayContact();
-          }
+      if (link.id === "contactLink") {
+        displayContact();
+      }
     }
   });
 });
@@ -29,15 +29,14 @@ $(".navs").hide();
 $(".threeLines").on("click", function () {
   $(".navs").animate({ width: "toggle", paddingInline: "toggle" }, 500);
 
-  if($("#iconOpen").hasClass("fa-grip-lines")){
+  if ($("#iconOpen").hasClass("fa-grip-lines")) {
     $("#iconOpen").removeClass("fa-grip-lines");
     $("#iconOpen").addClass("fa-xmark");
-   $(".navs li").animate({'paddingTop':"25px","opacity":"1"})
-  }else{
+    $(".navs li").animate({ paddingTop: "25px", opacity: "1" });
+  } else {
     $("#iconOpen").removeClass("fa-xmark");
     $("#iconOpen").addClass("fa-grip-lines");
-    $(".navs li").animate({'paddingTop':"0px","opacity":"0"})
-   ;
+    $(".navs li").animate({ paddingTop: "0px" });
   }
 });
 
@@ -91,7 +90,7 @@ async function fetchAPiDef(def) {
   );
 
   const response = await api.json();
-  displayMealsDef(response?.meals);
+  displayMealsDef(response?.meals.slice(0,20));
 }
 fetchAPiDef("");
 // display
@@ -121,7 +120,7 @@ async function fetchAPi() {
   );
 
   const response = await api.json();
-  displayMeals(response?.categories);
+  displayMeals(response?.categories.slice(0,20));
 }
 
 // display
@@ -140,7 +139,7 @@ function displayMeals(dataMenu) {
                             <img src="${dataMenu[i].strCategoryThumb}" alt="">
                             <div class="layer">
                                 <h2>${dataMenu[i].strCategory}</h2>
-                                <p>${slicedString}</p>
+                                <p>${dataMenu[i].strCategoryDescription.substring(0, 50)}</p>
                             </div>
                         </div></div>`;
   }
@@ -155,7 +154,7 @@ async function getMeal(categoryName) {
     options2
   );
   const mealResponse = await mealApi.json();
-  displayMealsCtegoryName(mealResponse?.meals);
+  displayMealsCtegoryName(mealResponse?.meals.slice(0,20));
 }
 // display meals
 function displayMealsCtegoryName(dataMenu) {
@@ -265,7 +264,7 @@ async function country(areaCuntry) {
   );
   const responseArea = await apiArea.json();
 
-  displayArea(responseArea?.meals);
+  displayArea(responseArea?.meals.slice(0, 20));
 }
 // display area
 function displayArea(dataArea) {
@@ -296,7 +295,7 @@ async function countryMeal(countryList) {
     optionsCountry
   );
   const responseCountry = await apiCountryMeal.json();
-  displayCountry(responseCountry?.meals);
+  displayCountry(responseCountry?.meals.slice(0,20));
 }
 
 //  display country meals
@@ -332,7 +331,7 @@ async function ingedientList(list) {
     optionsIngedient
   );
   const responseIngedient = await apiIngedient.json();
-  displayIngedient(responseIngedient?.meals);
+  displayIngedient(responseIngedient?.meals.slice(0, 20));
 }
 
 // display ingedient
@@ -343,13 +342,12 @@ function displayIngedient(ingedientparam) {
   document.getElementById("row").innerHTML = "";
   let displayIn = "";
   for (let i = 0; i < ingedientparam.length; i++) {
-
     displayIn += `
             <div class="col-sm-12 col-lg-3">
                 <div class="meal" id="${ingedientparam[i].strIngredient}" onclick="ingedientMeal(this.id)">
                     <i class="fa-solid fa-drumstick-bite"></i>
                     <h2>${ingedientparam[i]?.strIngredient}</h2>
-                    <p>${ingedientparam[i]?.strDescription? ingedientparam[i]?.strDescription?.substring(0,50):''}</p>
+                    <p>${ingedientparam[i]?.strDescription? ingedientparam[i]?.strDescription?.substring(0, 30): ""}</p>
                 </div>
             </div>`;
   }
@@ -368,7 +366,7 @@ async function ingedientMeal(mealF) {
   );
   const responseIngedientMeal = await apiIngedientMeal.json();
 
-  displayIngedientMeal(responseIngedientMeal?.meals);
+  displayIngedientMeal(responseIngedientMeal?.meals.slice(0,20));
 }
 
 // display ingedient meal
@@ -395,26 +393,26 @@ function displayIngedientMeal(dataNMeal) {
 //  ================= validation ================= //
 // let nameValid = document.getElementById("nameValid");
 
-function validationPassword(){
+function validationPassword() {
   const passwordValid = document.getElementById("passwordValid");
   const rules2Sign = document.querySelector(".rules2Sign");
   const success2Sign = document.querySelector(".success2Sign");
 
-    var passwordSign = passwordValid.value;
-    var regxPasswordSign =/^[0-9]{3}$/;
-     if( regxPasswordSign.test(passwordSign) ){
-        passwordValid.classList.add('is-valid');
-        passwordValid.classList.remove('is-invalid');
-        rules2Sign.style.display ='none';
-        success2Sign.style.display='block';
-        return true
-    }else{
-        passwordValid.classList.add('is-invalid');
-        passwordValid.classList.remove('is-valid');
-        rules2Sign.style.display ='block';
-        success2Sign.style.display='none';
-        return false
-    }
+  var passwordSign = passwordValid.value;
+  var regxPasswordSign = /^[0-9]{3}$/;
+  if (regxPasswordSign.test(passwordSign)) {
+    passwordValid.classList.add("is-valid");
+    passwordValid.classList.remove("is-invalid");
+    rules2Sign.style.display = "none";
+    success2Sign.style.display = "block";
+    return true;
+  } else {
+    passwordValid.classList.add("is-invalid");
+    passwordValid.classList.remove("is-valid");
+    rules2Sign.style.display = "block";
+    success2Sign.style.display = "none";
+    return false;
+  }
 }
 
 // re password
@@ -422,115 +420,116 @@ function validateRePassword() {
   const rePassValid = document.getElementById("rePassValid");
   const rulesRESign = document.querySelector(".rulesRESign");
   const successRESign = document.querySelector(".successRESign");
-    var password = document.getElementById('passwordValid').value;
-    var rePassword = rePassValid.value;
-    var regxPassword = /^[0-9]{3}$/;
-    if (regxPassword.test(password) && regxPassword.test(rePassword) && password == rePassword) {
-      rePassValid.classList.add('is-valid');
-      rePassValid.classList.remove('is-invalid');
-      rulesRESign.style.display = 'none';
-      successRESign.style.display = 'block';
+  var password = document.getElementById("passwordValid").value;
+  var rePassword = rePassValid.value;
+  var regxPassword = /^[0-9]{3}$/;
+  if (
+    regxPassword.test(password) &&
+    regxPassword.test(rePassword) &&
+    password == rePassword
+  ) {
+    rePassValid.classList.add("is-valid");
+    rePassValid.classList.remove("is-invalid");
+    rulesRESign.style.display = "none";
+    successRESign.style.display = "block";
 
-      return true;
-    }
-    else {
-
-      rePassValid.classList.add('is-invalid');
-      rePassValid.classList.remove('is-valid');
-      rulesRESign.style.display = 'block';
-      successRESign.style.display = 'none';
-      return false;
-    }
+    return true;
+  } else {
+    rePassValid.classList.add("is-invalid");
+    rePassValid.classList.remove("is-valid");
+    rulesRESign.style.display = "block";
+    successRESign.style.display = "none";
+    return false;
   }
+}
 
 // validation age
-function validationAge(){
+function validationAge() {
   const rulesAgeSign = document.querySelector(".rulesAgeSign");
   const successAgeSign = document.querySelector(".successAgeSign");
   const ageValid = document.getElementById("ageValid");
 
-    var ageV = ageValid.value;
-    var regxageV = /^(1[89]|[2-7]\d|80)$/;
+  var ageV = ageValid.value;
+  var regxageV = /^(1[89]|[2-7]\d|80)$/;
 
-    if(regxageV.test(ageV)){
-        rulesAgeSign.style.display ='none';
-        successAgeSign.style.display='block';
-        ageValid.classList.add('is-valid');
-        ageValid.classList.remove('is-invalid');
-        return true
-    }else{
-        rulesAgeSign.style.display ='block';
-        successAgeSign.style.display='none';
-        ageValid.classList.add('is-invalid');
-        ageValid.classList.remove('is-valid');
-        return false
-    };
+  if (regxageV.test(ageV)) {
+    rulesAgeSign.style.display = "none";
+    successAgeSign.style.display = "block";
+    ageValid.classList.add("is-valid");
+    ageValid.classList.remove("is-invalid");
+    return true;
+  } else {
+    rulesAgeSign.style.display = "block";
+    successAgeSign.style.display = "none";
+    ageValid.classList.add("is-invalid");
+    ageValid.classList.remove("is-valid");
+    return false;
+  }
 }
 // name validation
-function validationName(){
+function validationName() {
   const rulesNSign = document.querySelector(".rulesNSign");
   const successNSign = document.querySelector(".successNSign");
-    var nameSign = nameValid.value;
-    var regxNameSign = /^\w{3,10}$/;
+  var nameSign = nameValid.value;
+  var regxNameSign = /^\w{3,10}$/;
 
-    if(regxNameSign.test(nameSign)){
-        rulesNSign.style.display ='none';
-        successNSign.style.display='block';
-        nameValid.classList.add('is-valid');
-        nameValid.classList.remove('is-invalid');
-        return true
-    }else{
-        rulesNSign.style.display ='block';
-        successNSign.style.display='none';
-        nameValid.classList.add('is-invalid');
-        nameValid.classList.remove('is-valid');
-        return false
-    };
+  if (regxNameSign.test(nameSign)) {
+    rulesNSign.style.display = "none";
+    successNSign.style.display = "block";
+    nameValid.classList.add("is-valid");
+    nameValid.classList.remove("is-invalid");
+    return true;
+  } else {
+    rulesNSign.style.display = "block";
+    successNSign.style.display = "none";
+    nameValid.classList.add("is-invalid");
+    nameValid.classList.remove("is-valid");
+    return false;
+  }
 }
 // validation phone
-function validationPhone(){
-    const phoneValid = document.getElementById("phoneValid");
-    const rulesPHSign = document.querySelector(".rulesPHSign");
-    const successPHSign = document.querySelector(".successPHSign");
-    var phoneValidD = phoneValid.value;
-    var regxphoneValidD =/^(010|011|012)\d{8}$/;
+function validationPhone() {
+  const phoneValid = document.getElementById("phoneValid");
+  const rulesPHSign = document.querySelector(".rulesPHSign");
+  const successPHSign = document.querySelector(".successPHSign");
+  var phoneValidD = phoneValid.value;
+  var regxphoneValidD = /^(010|011|012)\d{8}$/;
 
-    if(regxphoneValidD.test(phoneValidD)){
-        rulesPHSign.style.display ='none';
-        successPHSign.style.display='block';
-        phoneValid.classList.add('is-valid');
-        phoneValid.classList.remove('is-invalid');
-        return true
-    }else{
-        rulesPHSign.style.display ='block';
-        successPHSign.style.display='none';
-        phoneValid.classList.add('is-invalid');
-        phoneValid.classList.remove('is-valid');
-        return false
-    };
+  if (regxphoneValidD.test(phoneValidD)) {
+    rulesPHSign.style.display = "none";
+    successPHSign.style.display = "block";
+    phoneValid.classList.add("is-valid");
+    phoneValid.classList.remove("is-invalid");
+    return true;
+  } else {
+    rulesPHSign.style.display = "block";
+    successPHSign.style.display = "none";
+    phoneValid.classList.add("is-invalid");
+    phoneValid.classList.remove("is-valid");
+    return false;
+  }
 }
 // email validation
-function validaionEmail(){
+function validaionEmail() {
   const emailValid = document.getElementById("emailValid");
   const rulesSign = document.querySelector(".rulesSign");
   const successSign = document.querySelector(".successSign");
-    var email= emailValid.value;
-    var regxEmailSign = /^[a-zA-z]{3,9}@(gmail|yahoo)\.com$/;
+  var email = emailValid.value;
+  var regxEmailSign = /^[a-zA-z]{3,9}@(gmail|yahoo)\.com$/;
 
-    if(regxEmailSign.test(email)){
-        rulesSign.style.display ='none';
-        successSign.style.display='block';
-        emailValid.classList.add('is-valid');
-        emailValid.classList.remove('is-invalid');
-        return true
-    }else{
-        rulesSign.style.display ='block';
-        successSign.style.display='none';
-        emailValid.classList.add('is-invalid');
-        emailValid.classList.remove('is-valid');
-        return false
-    };
-
+  if (regxEmailSign.test(email)) {
+    rulesSign.style.display = "none";
+    successSign.style.display = "block";
+    emailValid.classList.add("is-valid");
+    emailValid.classList.remove("is-invalid");
+    return true;
+  } else {
+    rulesSign.style.display = "block";
+    successSign.style.display = "none";
+    emailValid.classList.add("is-invalid");
+    emailValid.classList.remove("is-valid");
+    return false;
+  }
 }
 
 // submit button
@@ -608,25 +607,28 @@ function displayContact() {
 </div>  
        `;
   document.getElementById("rowCont").innerHTML = contact;
-  
-
 }
 
+function validateForm() {
+  var isPasswordValid = validationPassword();
+  var isprePasswordValid = validateRePassword();
 
-function validateForm(){
-    var isPasswordValid = validationPassword();
-    var isprePasswordValid = validateRePassword();
+  var isAgeValid = validationAge();
+  var isNameValid = validationName();
+  var isPhoneValid = validationPhone();
+  var isEmailValid = validaionEmail();
+  var submitButton = document.getElementById("submitButton");
 
-    var isAgeValid = validationAge();
-    var isNameValid = validationName();
-    var isPhoneValid = validationPhone();
-    var isEmailValid = validaionEmail();
-    var submitButton = document.getElementById('submitButton');
-
-    if (validationPassword() &&  validateRePassword() && validationAge() && validationName() && validationPhone() && validaionEmail()) {
-     
-      submitButton.removeAttribute("disabled");
-    } else {
-        submitButton.setAttribute("disabled",true);
-    }
+  if (
+    validationPassword() &&
+    validateRePassword() &&
+    validationAge() &&
+    validationName() &&
+    validationPhone() &&
+    validaionEmail()
+  ) {
+    submitButton.removeAttribute("disabled");
+  } else {
+    submitButton.setAttribute("disabled", true);
   }
+}
