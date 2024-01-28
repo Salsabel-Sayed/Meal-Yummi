@@ -32,9 +32,12 @@ $(".threeLines").on("click", function () {
   if($("#iconOpen").hasClass("fa-grip-lines")){
     $("#iconOpen").removeClass("fa-grip-lines");
     $("#iconOpen").addClass("fa-xmark");
+   $(".navs li").animate({'paddingTop':"25px","opacity":"1"})
   }else{
     $("#iconOpen").removeClass("fa-xmark");
     $("#iconOpen").addClass("fa-grip-lines");
+    $(".navs li").animate({'paddingTop':"0px","opacity":"0"})
+   ;
   }
 });
 
