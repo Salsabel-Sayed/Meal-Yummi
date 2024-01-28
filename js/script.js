@@ -93,7 +93,6 @@ async function fetchAPiDef(def) {
 fetchAPiDef("");
 // display
 function displayMealsDef(dataMenu) {
-  document.getElementById("rowSearch").innerHTML = "";
   document.getElementById("rowCont").innerHTML = "";
   document.getElementById("row").innerHTML = "";
   let menu = "";
