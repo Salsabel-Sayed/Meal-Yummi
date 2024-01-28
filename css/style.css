@@ -1,7 +1,9 @@
 /* !roots */
 /* ///////////////////////////////////////////////////////// */
 /* ? Header */
-
+body{
+    background-color: #cfb9be;
+}
 header{
     background-color: aquamarine;
     white-space: nowrap;
@@ -30,7 +32,7 @@ header #open{
     height: 100%;
     color: white;
     cursor: pointer;
-    background-color: rgba(208, 137, 157, 0.784);
+    background-color: rgb(208, 137, 157);
     padding: 6px;
     display: flex;
     flex-direction: column;
@@ -56,7 +58,9 @@ header .threeLines .fa-grip-lines ,header .threeLines .fa-xmark{
     font-size: 45px;
 }
 header .active{
-    background-color: blueviolet;
+background-color: rgb(114, 50, 69);
+border-radius: 10px;
+padding: 5px;
 }
 /* //////////////////////////////////////////////////////////////// */
 /* ?section */
@@ -68,13 +72,17 @@ section{
     position: relative;
     overflow: hidden;
     cursor: pointer;
-}
+    border-radius: 10px;
+    color: white;
+    font-size: 25px;
+ 
+    background-color:   #a98585 ;}
 .meal img{
     width: 100%;
     
 }
 .meal .layer{
-    background-color: #ff00002e;
+    background-color: #9273732e;
     position: absolute;
     top: 106%;
     width: 100%;
@@ -93,8 +101,11 @@ section{
 /* ////////////////////////////////////////// */
 .contry{
     cursor: pointer;
-    background-color: rgb(134, 107, 107);
+    background-color: #aa8d95;
     text-align: center;
+    padding: 14px;
+    border-radius: 10px;
+    color: white;
 }
 .contry .fa-house,.fa-drumstick-bite{
     font-size: 4rem;
@@ -108,19 +119,26 @@ section{
     width: 70%;
 }
 .rightDes .lista .res span{
-    background-color: rgb(111, 172, 172) ;
+    background-color: #aa8d95 ;
     padding: 10px;
     margin-block: 8px;
-    display: inline-block
+    display: inline-block;
+    color: white;
+    border: 0;
 }
 .rightDes .lista .tags button{
-    background-color: red;
+    background-color: rgb(123, 36, 36);
     font-size: 25px;
     border: 0;
     border-radius: 10px;
 }
 .rightDes .lista .tags button#leftBtn{
-    background-color: aquamarine;
+    background-color: #6facac;
+
+}
+.rightDes .lista .tags a{
+    text-decoration: none;
+    color: white;
 }
 /* ///////////////////////////////////////////////////////////////////// */
 .contactLeft input{
@@ -132,7 +150,7 @@ section{
 
 /* //////////////////////////////////////////////////////////////////////// */
 
-
+/* 
 .inputs{
     backdrop-filter: blur(20px);
     padding: 7%;
@@ -198,7 +216,7 @@ button.form-control{
     font-family: 'Caveat', cursive;
     background-color: rgb(190, 139, 139);
 
-}
+} */
 /* .form-control:focus{
     box-shadow: 0 0 0 0.25rem #e0e8d1;
     border: 1px solid #e0e8d1;
@@ -226,3 +244,6 @@ button.form-control{
     font-family: 'Caveat', cursive;
 }
 
+#rowSearch input{
+    width: 100%;
+}

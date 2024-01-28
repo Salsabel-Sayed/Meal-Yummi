@@ -63,6 +63,7 @@ function searchLetter() {
 
 function displaySearch() {
   document.getElementById("row").innerHTML = "";
+  document.getElementById("rowCont").innerHTML = "";
   let serch = "";
   serch += ` 
         <div class="col-sm-12 col-lg-6">
@@ -92,6 +93,9 @@ async function fetchAPiDef(def) {
 fetchAPiDef("");
 // display
 function displayMealsDef(dataMenu) {
+  document.getElementById("rowSearch").innerHTML = "";
+  document.getElementById("rowCont").innerHTML = "";
+  document.getElementById("row").innerHTML = "";
   let menu = "";
   for (let i = 0; i < dataMenu.length; i++) {
     menu += `
@@ -121,13 +125,15 @@ async function fetchAPi() {
 // display
 function displayMeals(dataMenu) {
   document.getElementById("rowSearch").innerHTML = "";
+  document.getElementById("rowCont").innerHTML = "";
+  document.getElementById("row").innerHTML = "";
   let menu = "";
   for (let i = 0; i < dataMenu.length; i++) {
     let strCategoryDescription = dataMenu[i].strCategoryDescription;
     let index = strCategoryDescription.indexOf(".");
     let slicedString = strCategoryDescription.slice(0, index);
     menu += `
-        <div  class="col-sm-12 col-lg-3">
+        <div class="col-sm-12 col-lg-3">
                         <div class="meal" onclick="getMeal(this.id)" id="${dataMenu[i]?.strCategory}">
                             <img src="${dataMenu[i].strCategoryThumb}" alt="">
                             <div class="layer">
@@ -151,6 +157,9 @@ async function getMeal(categoryName) {
 }
 // display meals
 function displayMealsCtegoryName(dataMenu) {
+  document.getElementById("rowSearch").innerHTML = "";
+  document.getElementById("rowCont").innerHTML = "";
+  document.getElementById("row").innerHTML = "";
   let menuMeal = "";
   for (let i = 0; i < dataMenu.length; i++) {
     menuMeal += `
@@ -181,6 +190,9 @@ async function descriptionApi(mealDes) {
 // window description
 
 function descriptionMeal(id) {
+  document.getElementById("row").innerHTML = "";
+  document.getElementById("rowSearch").innerHTML = "";
+  document.getElementById("rowCont").innerHTML = "";
   let desMeal = "";
   let ingredients = ``;
 
@@ -191,7 +203,6 @@ function descriptionMeal(id) {
       } ${id[`strIngredient${i}`]}</span>`;
     }
   }
-
   desMeal += `
     <div class="col-sm-12 col-lg-6">
                         <div class="leftDes">
@@ -257,6 +268,8 @@ async function country(areaCuntry) {
 // display area
 function displayArea(dataArea) {
   document.getElementById("rowSearch").innerHTML = "";
+  document.getElementById("row").innerHTML = "";
+  document.getElementById("rowCont").innerHTML = "";
   let countries = "";
   for (let i = 0; i < dataArea.length; i++) {
     countries += `
@@ -286,6 +299,9 @@ async function countryMeal(countryList) {
 
 //  display country meals
 function displayCountry(countryMealparam) {
+  document.getElementById("rowSearch").innerHTML = "";
+  document.getElementById("row").innerHTML = "";
+  document.getElementById("rowCont").innerHTML = "";
   let displayCountryMeal = "";
   for (i = 0; i < countryMealparam.length; i++) {
     displayCountryMeal += `
@@ -321,6 +337,8 @@ async function ingedientList(list) {
 
 function displayIngedient(ingedientparam) {
   document.getElementById("rowSearch").innerHTML = "";
+  document.getElementById("rowCont").innerHTML = "";
+  document.getElementById("row").innerHTML = "";
   let displayIn = "";
   for (let i = 0; i < ingedientparam.length; i++) {
 
@@ -353,6 +371,9 @@ async function ingedientMeal(mealF) {
 
 // display ingedient meal
 function displayIngedientMeal(dataNMeal) {
+  document.getElementById("rowSearch").innerHTML = "";
+  document.getElementById("rowCont").innerHTML = "";
+  document.getElementById("row").innerHTML = "";
   let ingrdMeal = "";
   for (let i = 0; i < dataNMeal.length; i++) {
     ingrdMeal += `
@@ -514,6 +535,7 @@ function validaionEmail(){
 
 function displayContact() {
   document.getElementById("row").innerHTML = "";
+  document.getElementById("rowSearch").innerHTML = "";
   let contact = "";
   contact += `  <div class="col-sm-12 col-lg-6">
   <div class="contactLeft">
