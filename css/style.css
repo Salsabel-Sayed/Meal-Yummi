@@ -1,0 +1,228 @@
+/* !roots */
+/* ///////////////////////////////////////////////////////// */
+/* ? Header */
+
+header{
+    background-color: aquamarine;
+    white-space: nowrap;
+}
+header .navbarSide{
+    display: flex;
+    position: fixed;
+    height: 100%;
+    z-index: 9999999;
+    align-items: center;
+    white-space: nowrap;
+}
+header .iconX .icon{
+    color: white;
+}
+header .navs{
+    background-color: rgba(208, 137, 157, 0.627);
+    display: flex;
+    justify-content:space-between ;
+    padding-inline: 10px;
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+header #open{
+    height: 100%;
+    color: white;
+    cursor: pointer;
+    background-color: rgba(208, 137, 157, 0.784);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+header #open .logoImg{
+    width: 40px;
+   
+}
+header .navbarSide ul{
+    list-style: none;
+}
+header .navbarSide ul li{
+    margin-block: 40%;
+}
+header .navbarSide ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    text-transform: capitalize;
+}
+header .threeLines .fa-grip-lines ,header .threeLines .fa-xmark{
+    font-size: 45px;
+}
+header .active{
+    background-color: blueviolet;
+}
+/* //////////////////////////////////////////////////////////////// */
+/* ?section */
+section{
+    margin-top: 5%;
+}
+.meal{
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.meal img{
+    width: 100%;
+    
+}
+.meal .layer{
+    background-color: #ff00002e;
+    position: absolute;
+    top: 106%;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    transition: .4s;
+}
+.meal:hover .layer{
+    top: 0;
+}
+
+/* ////////////////////////////////////////// */
+.contry{
+    cursor: pointer;
+    background-color: rgb(134, 107, 107);
+    text-align: center;
+}
+.contry .fa-house,.fa-drumstick-bite{
+    font-size: 4rem;
+}
+.contry h2{
+    font-size: 40px;
+}
+/* /////////////////////////////////////////////////////////// */
+
+.leftDes img{
+    width: 70%;
+}
+.rightDes .lista .res span{
+    background-color: rgb(111, 172, 172) ;
+    padding: 10px;
+    margin-block: 8px;
+    display: inline-block
+}
+.rightDes .lista .tags button{
+    background-color: red;
+    font-size: 25px;
+    border: 0;
+    border-radius: 10px;
+}
+.rightDes .lista .tags button#leftBtn{
+    background-color: aquamarine;
+}
+/* ///////////////////////////////////////////////////////////////////// */
+.contactLeft input{
+    margin-block: 20px;
+}
+.btnSubmit button{
+    background-color: rgb(237, 163, 163);
+}
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+
+.inputs{
+    backdrop-filter: blur(20px);
+    padding: 7%;
+    border-radius:90px 0 90px 90px;
+    box-shadow: 0 0 20px 0px #92908f;
+}
+
+.inputs h1{
+    text-align: center;
+    font-family: 'Satisfy', cursive;
+    color: #679c5f;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.text p{
+    text-align: center;
+    margin-top: 12%;
+    color: beige;
+    font-weight: 900;
+    font-size: 25px;
+    position: relative;
+    font-family: 'Caveat', cursive;
+}
+.text p::before{
+    content: '';
+    position: absolute;
+    background-color: darkseagreen;
+    top: -7px;
+    left: 30%;
+    width: 40%;
+    height: 120%;
+    border: 4px solid darkseagreen;
+    filter: url(#wavy);
+    z-index: -1;
+}
+.text p a{
+    color: white;
+    text-decoration:underline;
+    transition: .3s;
+    font-family: 'Caveat', cursive;
+}
+.text p a:hover{
+    text-decoration:underline;
+}
+
+input{
+    margin-bottom: 10px;
+    border: none;
+    box-shadow: 0 0 9px 4px inset #738d7342;
+    font-family: 'Caveat', cursive;
+}
+.form-control{
+    background-color: #f7f6ea80;
+    outline: #464b2d;
+    font-size: 20px;
+    
+}
+button.form-control{
+    font-size: 26px;
+    color: #21461a;
+    font-weight: 600;
+    box-shadow: 0 0 15px 4px #738d7342;
+    font-family: 'Caveat', cursive;
+    background-color: rgb(190, 139, 139);
+
+}
+/* .form-control:focus{
+    box-shadow: 0 0 0 0.25rem #e0e8d1;
+    border: 1px solid #e0e8d1;
+    background-color: #eaeee0;
+} */
+
+.emailSign,.passwordSign{
+    margin-bottom: 3%;
+    font-family: 'Caveat', cursive;
+}
+.rulesNSign,.rules2Sign,.rulesSign,.rulesPHSign,.rulesAgeSign,.rulesRESign{
+    color: darkred;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    display: none;
+    font-family: 'Caveat', cursive;
+}
+.successNSign,.success2Sign,.successSign,.successPHSign,.successAgeSign,.successRESign{
+    color: green;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    display: none;
+    font-family: 'Caveat', cursive;
+}
+
