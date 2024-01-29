@@ -2,6 +2,10 @@
 let links = document.querySelectorAll(".links a");
 
 // * ================= Events ================= //
+
+
+
+
 // click on links
 
 links.forEach(function (link) {
@@ -83,14 +87,18 @@ function displaySearch() {
 }
 
 async function fetchAPiDef(def) {
+  $(".loading").css({display: "flex"})
   const options = { method: "GET", headers: { Accept: "application/json" } };
   const api = await fetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${def}`,
     options
+
   );
 
   const response = await api.json();
   displayMealsDef(response?.meals.slice(0,20));
+  $(".loading").css({display: "none"})
+
 }
 fetchAPiDef("");
 // display
@@ -113,6 +121,7 @@ function displayMealsDef(dataMenu) {
 
 // category api
 async function fetchAPi() {
+  $(".loading").css({display: "flex"})
   const options = { method: "GET", headers: { Accept: "application/json" } };
   const api = await fetch(
     `https://www.themealdb.com/api/json/v1/1/categories.php`,
@@ -121,6 +130,9 @@ async function fetchAPi() {
 
   const response = await api.json();
   displayMeals(response?.categories.slice(0,20));
+
+  $(".loading").css({display: "none"})
+
 }
 
 // display
@@ -148,6 +160,8 @@ function displayMeals(dataMenu) {
 
 // meals categoryName
 async function getMeal(categoryName) {
+ $(".loading").css({display: "flex"})
+ 
   const options2 = { method: "GET", headers: { Accept: "application/json" } };
   const mealApi = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`,
@@ -155,6 +169,7 @@ async function getMeal(categoryName) {
   );
   const mealResponse = await mealApi.json();
   displayMealsCtegoryName(mealResponse?.meals.slice(0,20));
+   $(".loading").css({display: "none"})
 }
 // display meals
 function displayMealsCtegoryName(dataMenu) {
@@ -177,6 +192,7 @@ function displayMealsCtegoryName(dataMenu) {
 }
 // window description api
 async function descriptionApi(mealDes) {
+ $(".loading").css({display: "flex"})
   const optionsDescription = {
     method: "GET",
     headers: { Accept: "application/json" },
@@ -187,6 +203,7 @@ async function descriptionApi(mealDes) {
   );
   const mealResponseDescription = await mealApiDescription.json();
   descriptionMeal(mealResponseDescription?.meals[0]);
+   $(".loading").css({display: "none"})
 }
 // window description
 
@@ -254,6 +271,7 @@ let area = document.getElementById("countryLink");
 // api area
 
 async function country(areaCuntry) {
+ $(".loading").css({display: "flex"})
   const optionsArea = {
     method: "GET",
     headers: { Accept: "application/json" },
@@ -265,6 +283,7 @@ async function country(areaCuntry) {
   const responseArea = await apiArea.json();
 
   displayArea(responseArea?.meals.slice(0, 20));
+   $(".loading").css({display: "none"})
 }
 // display area
 function displayArea(dataArea) {
@@ -286,6 +305,7 @@ function displayArea(dataArea) {
 
 // country meals
 async function countryMeal(countryList) {
+ $(".loading").css({display: "flex"})
   const optionsCountry = {
     method: "GET",
     headers: { Accept: "application/json" },
@@ -296,6 +316,7 @@ async function countryMeal(countryList) {
   );
   const responseCountry = await apiCountryMeal.json();
   displayCountry(responseCountry?.meals.slice(0,20));
+   $(".loading").css({display: "none"})
 }
 
 //  display country meals
@@ -322,6 +343,7 @@ function displayCountry(countryMealparam) {
 // ingedient
 
 async function ingedientList(list) {
+ $(".loading").css({display: "flex"})
   const optionsIngedient = {
     method: "GET",
     headers: { Accept: "application/json" },
@@ -332,6 +354,7 @@ async function ingedientList(list) {
   );
   const responseIngedient = await apiIngedient.json();
   displayIngedient(responseIngedient?.meals.slice(0, 20));
+   $(".loading").css({display: "none"})
 }
 
 // display ingedient
@@ -356,6 +379,7 @@ function displayIngedient(ingedientparam) {
 
 // ingedient meal
 async function ingedientMeal(mealF) {
+ $(".loading").css({display: "flex"})
   const optionsIngedientMeal = {
     method: "GET",
     headers: { Accept: "application/json" },
@@ -367,6 +391,7 @@ async function ingedientMeal(mealF) {
   const responseIngedientMeal = await apiIngedientMeal.json();
 
   displayIngedientMeal(responseIngedientMeal?.meals.slice(0,20));
+   $(".loading").css({display: "none"})
 }
 
 // display ingedient meal
