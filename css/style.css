@@ -270,3 +270,11 @@ section{
     }
   }
 
+/* /////////////////////////////////////////////////// */
+
+.searchName, .searchLetter ,.name, .number,.passwordSign,.age,.email,.passwordSign,.btnSubmit,.contry,.meal{
+  margin-left: 12%;
+}
+.desMeal,.rightDes{
+  margin-left: 15%;
+}

@@ -3,9 +3,6 @@ let links = document.querySelectorAll(".links a");
 
 // * ================= Events ================= //
 
-
-
-
 // click on links
 
 links.forEach(function (link) {
@@ -72,14 +69,14 @@ function displaySearch() {
   document.getElementById("rowCont").innerHTML = "";
   let serch = "";
   serch += ` 
-        <div class="col-sm-12 col-lg-6">
+        <div class="col-sm-10 col-lg-6">
                     <div class="searchName">
-                        <input id="searchByName"  type="search" placeholder="search by name">
+                        <input id="searchByName" class="form-control my-2"  type="search" placeholder="search by name">
                     </div>
                   </div>
                   <div class="col-sm-12 col-lg-6">
                     <div class="searchLetter">
-                    <input id="letterSearch" maxlength="1" type="search" placeholder="search by first letter">
+                    <input id="letterSearch" maxlength="1"  class="form-control my-2" type="search" placeholder="search by first letter">
                     </div>
                   </div>                    
                 </div>`;
@@ -222,7 +219,7 @@ function descriptionMeal(id) {
     }
   }
   desMeal += `
-    <div class="col-sm-12 col-lg-6">
+    <div class="col-sm-12 col-lg-6 desMeal">
                         <div class="leftDes">
                             <img src="${id.strMealThumb}" alt="">
                             <h1>${id.strMeal}</h1>
